@@ -48,14 +48,11 @@ ubuntu_hdd_export()
 
 /mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe \
 	-NoProfile -ExecutionPolicy unrestricted \
-	-Command Start-Process powerShell.exe \
+	-Command Start-Process powerShell.exe -Wait \
 	-ArgumentList \"-Command wsl --mount \\\\.\\PHYSICALDRIVE1 --bare\; wsl --mount \\\\.\\PHYSICALDRIVE2 --bare\" -Verb runas
-/mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe \
-        -NoProfile -ExecutionPolicy unrestricted \
-        -Command Get-CimInstance Win32_DiskDrive
 ubuntu_hdd_import $1
 ubuntu_hdd_export
 /mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe \
 	-NoProfile -ExecutionPolicy unrestricted \
-	-Command Start-Process powerShell.exe \
+	-Command Start-Process powerShell.exe -Wait \
 	-ArgumentList \"-Command wsl --unmount \\\\.\\PHYSICALDRIVE2\; wsl --unmount \\\\.\\PHYSICALDRIVE1\" -Verb runas
