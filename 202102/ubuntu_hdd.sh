@@ -14,6 +14,8 @@ ubuntu_hdd_import()
     mount -o bind /dev /mnt/rpool/dev
     echo mount -o bind /dev/pts /mnt/rpool/dev/pts
     mount -o bind /dev/pts /mnt/rpool/dev/pts
+    echo mount -o bind /mnt/wslg/.X11-unix /mnt/rpool/tmp/.X11-unix
+    mount -o bind /mnt/wslg/.X11-unix /mnt/rpool/tmp/.X11-unix
     echo mount -t proc proc /mnt/rpool/proc
     mount -t proc proc /mnt/rpool/proc
     echo mount -t sysfs sys /mnt/rpool/sys
@@ -32,6 +34,8 @@ ubuntu_hdd_export()
     umount /mnt/rpool/sys
     echo umount /mnt/rpool/proc
     umount /mnt/rpool/proc
+    echo umount /mnt/rpool/tmp/.X11-unix
+    umount /mnt/rpool/tmp/.X11-unix
     echo umount /mnt/rpool/dev/pts
     umount /mnt/rpool/dev/pts
     echo umount /mnt/rpool/dev
